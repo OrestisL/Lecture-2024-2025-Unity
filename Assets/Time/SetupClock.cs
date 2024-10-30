@@ -21,6 +21,9 @@ public class SetupClock : MonoBehaviour
             currentIdicator.transform.rotation =
                 Quaternion.AngleAxis(angle, currentIdicator.transform.forward);
         }
+        string now = System.DateTime.Now.ToString("hh:mm:ss");
+
+        GetComponent<MoveIndicators>().SetTime(now);
     }
 
     Vector3 PointOnCircle(Vector3 center, float radius, int index)
