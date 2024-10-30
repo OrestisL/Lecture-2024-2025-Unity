@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class SetupClock : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class SetupClock : MonoBehaviour
     public float Radius;
 
     public GameObject TimeIndicatorPrefab;
+
+    public TextMeshProUGUI DateText;
 
     private void Start()
     {
@@ -22,7 +25,7 @@ public class SetupClock : MonoBehaviour
                 Quaternion.AngleAxis(angle, currentIdicator.transform.forward);
         }
         string now = System.DateTime.Now.ToString("hh:mm:ss");
-
+        
         GetComponent<MoveIndicators>().SetTime(now);
     }
 
@@ -33,5 +36,10 @@ public class SetupClock : MonoBehaviour
         position.z = 0;
         position.y = center.z + radius * Mathf.Sin(2 * Mathf.PI * (float)index / 12);
         return position;
+    }
+
+    private void Update()
+    {
+        DateText.text = System.DateTime.Now.ToString("U");
     }
 }
