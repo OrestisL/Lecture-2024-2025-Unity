@@ -10,8 +10,9 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 /Assets/StudentWork/
+/Assets/[Ss]olutions/
 /.utmp/
-
+/Lecture 2024-2025_BurstDebugInformation
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -54,6 +55,7 @@ ExportedObj/
 *.pdb.meta
 *.mdb.meta
 
+/Assets/Solutions.meta
 # Unity3D generated file on crash reports
 sysinfo.txt
 
