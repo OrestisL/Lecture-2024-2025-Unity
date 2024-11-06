@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class PlayerInteractions : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerInteractions : MonoBehaviour
             Collider[] interactables = Physics.OverlapSphere(transform.position, 
                 InteractRadius, InteractableLayer);
 
+           
             if (interactables.Length > 0) 
             {
                 if (interactables[0].gameObject.TryGetComponent(out BaseInteractable interactable)) 
