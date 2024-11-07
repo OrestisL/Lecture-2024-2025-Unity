@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class SimpleMovement : MonoBehaviour
 {
     public CharacterController controller;
-    public InputActionAsset inputs;
     public float walkSpeed;
 
     [SerializeField]
@@ -14,9 +13,7 @@ public class SimpleMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
 
-        _moveAction = inputs.FindAction("Move");
-
-        GetComponent<PlayerInteractions>().SetAction(inputs.FindAction("Interact"));
+        _moveAction = InputSystem.actions.FindAction("Move");
     }
 
     private void Update()

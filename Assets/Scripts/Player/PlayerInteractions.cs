@@ -8,16 +8,24 @@ public class PlayerInteractions : MonoBehaviour
     public float InteractRadius = 2.0f;
     private InputAction interactAction;
 
-    public void SetAction(InputAction action)
+    private void Start()
     {
-        interactAction = action;
+        SetAction();
+    }
+
+    public void SetAction()
+    {
+        interactAction = InputSystem.actions.FindAction("Interact");
 
         interactAction.started += (context) => 
         {
             Collider[] interactables = Physics.OverlapSphere(transform.position, 
                 InteractRadius, InteractableLayer);
 
-           
+            interactables = 
+                interactables.OrderByDescending(
+                    collider => Vector3.Distance(collider.gameObject.transform.position, transform.position)).ToArray();
+
             if (interactables.Length > 0) 
             {
                 if (interactables[0].gameObject.TryGetComponent(out BaseInteractable interactable)) 
