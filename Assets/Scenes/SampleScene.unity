@@ -879,7 +879,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  inputs: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   walkSpeed: 5
   _moveAction:
     m_Name: Move
@@ -2186,7 +2185,7 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
-  InteractRadius: 2
+  InteractRadius: 14.09
   CanvasPrefab: {fileID: 8131005115127747851, guid: cf07fa167a569e241a1abaffd43beab3, type: 3}
 --- !u!65 &2099571549
 BoxCollider:

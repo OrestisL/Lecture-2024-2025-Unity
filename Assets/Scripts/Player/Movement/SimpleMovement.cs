@@ -7,7 +7,7 @@ public class SimpleMovement : MonoBehaviour
     public float walkSpeed;
 
     [SerializeField]
-    InputAction _moveAction;
+    private InputAction _moveAction;
 
     private void Start()
     {
