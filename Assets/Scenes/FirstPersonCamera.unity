@@ -563,6 +563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSensitivity: 20
   Controller: {fileID: 0}
+  WalkSpeed: 2
+  RunSpeed: 5
   clampAngle: 30
 --- !u!1 &715947069
 GameObject:
