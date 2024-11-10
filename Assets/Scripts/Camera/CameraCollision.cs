@@ -11,7 +11,6 @@ public class CameraCollision : MonoBehaviour
     [Range(0.5f, 15f)]
     public float scrollWheelSensitivity = 1.0f;
 
-
     private Vector3 dollyDir;
     public Vector3 dollyDirAdjusted;
 
@@ -57,7 +56,6 @@ public class CameraCollision : MonoBehaviour
         Vector3 vel = Vector3.zero;
         transform.localPosition = Vector3.Lerp(transform.localPosition, dollyDir * distance, 0.2f);
         //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, dollyDir * distance, ref vel, 0.2f);
-
     }
 
     public void Zoom(float scroll)
@@ -75,6 +73,4 @@ public class CameraCollision : MonoBehaviour
         currentDistance = Mathf.Clamp(currentDistance, maxZoomIn, maxZoomOut);
         maxDistance = currentDistance;
     }
-
-
 }

@@ -558,14 +558,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 677210626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa37c666000695458a8b720db49fe6f, type: 3}
+  m_Script: {fileID: 11500000, guid: b30a4c8a4a5a4fe42acff4dc420aff0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inputSensitivity: 20
   Controller: {fileID: 0}
   WalkSpeed: 2
   RunSpeed: 5
-  clampAngle: 30
+  clampAngle: 40
 --- !u!1 &715947069
 GameObject:
   m_ObjectHideFlags: 0
