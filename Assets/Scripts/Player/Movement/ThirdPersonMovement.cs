@@ -19,6 +19,7 @@ public class ThirdPersonMovement : MonoBehaviour
         Controller = GetComponent<CharacterController>();
 
         _moveAction = InputSystem.actions.FindAction("Move");
+
         _runAction = InputSystem.actions.FindAction("Sprint");
         _runAction.started += (_) => _running = true;
         _runAction.canceled += (_) => _running = false;
@@ -51,6 +52,5 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward * currentSpeed;
 
         Controller.Move(Time.deltaTime * moveDirection);
-        //add code here for running
     }
 }

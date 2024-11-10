@@ -367,7 +367,7 @@ MonoBehaviour:
   distance: 0
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!114 &573425545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 1230909991}
   - component: {fileID: 1230909990}
   - component: {fileID: 1230909989}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -935,7 +935,7 @@ MonoBehaviour:
   camFollowObj: {fileID: 677210626}
   clampAngleMin: 30
   clampAngleMax: 60
-  inputSensitivity: 50
+  inputSensitivity: 20
   cam: {fileID: 573425543}
   smoothCam: 0
   smoothAmount: 1

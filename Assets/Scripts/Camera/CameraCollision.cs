@@ -36,12 +36,11 @@ public class CameraCollision : MonoBehaviour
 
     public void FixedUpdate()
     {
-        HanldeCollision();
+        HandleCollision();
     }
 
-    private void HanldeCollision()
+    private void HandleCollision()
     {
-
         Vector3 desiredCamPos = transform.parent.TransformPoint(dollyDir * maxDistance);
 
         RaycastHit hit;
@@ -63,7 +62,6 @@ public class CameraCollision : MonoBehaviour
 
     public void Zoom(float scroll)
     {
-
         float currentDistance = maxDistance;
 
         //float v = 0f;
