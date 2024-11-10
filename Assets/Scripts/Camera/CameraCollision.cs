@@ -28,13 +28,6 @@ public class CameraCollision : MonoBehaviour
         _zoomAction = InputSystem.actions.FindAction("Zoom");
     }
 
-    //void Update()
-    //{
-    //    HanldeCollision();
-    //    Zoom();
-    //}
-
-
     public void Update()
     {
         float zoom = _zoomAction.ReadValue<Vector2>().y;

@@ -496,7 +496,6 @@ GameObject:
   m_Component:
   - component: {fileID: 677210630}
   - component: {fileID: 677210629}
-  - component: {fileID: 677210627}
   - component: {fileID: 677210631}
   - component: {fileID: 677210632}
   - component: {fileID: 677210633}
@@ -507,29 +506,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &677210627
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677210626}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &677210629
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -591,17 +567,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5455a7c26c2ee894f956a13d02c8571b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  walkSpeed: 5
-  _moveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: b2d4c1ea-4ab1-4dd1-b243-8336da31e38b
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
+  Controller: {fileID: 0}
+  WalkSpeed: 3
+  RunSpeed: 5
+  _mainCam: {fileID: 0}
 --- !u!114 &677210633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,8 +1088,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 410087041}
   - {fileID: 1230909992}
-  - {fileID: 677210630}
   - {fileID: 715947072}
   - {fileID: 2099571552}
   - {fileID: 1306695117}
+  - {fileID: 677210630}
   - {fileID: 1983662491}
