@@ -29,16 +29,15 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector2 currentMoveValue = _moveAction.ReadValue<Vector2>();
-        Move(new(currentMoveValue.x, 0, currentMoveValue.y));
+        Vector2 move = _moveAction.ReadValue<Vector2>();
+        Move(move);
     }
 
-    private void Move(Vector3 input)
+    private void Move(Vector2 input)
     {
         if (input.sqrMagnitude == 0)
             return;
 
-        input.y = 0;
         Vector3 inputDirection = new Vector3(input.x, 0, input.y).normalized;
 
         //rotate player to where the camera is looking
