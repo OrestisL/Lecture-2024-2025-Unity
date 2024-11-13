@@ -1,13 +1,18 @@
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class FirstPersonMovement : MonoBehaviour
 {
-    public float inputSensitivity;
+    public float InputSensitivity;
     public CharacterController Controller;
 
     public float WalkSpeed, RunSpeed;
     private bool _running;
+    public float Gravity;
+    public float JumpHeight;
+    private float _jumpSpeed;
 
     private Camera _mainCam;
     private float _rotX, _rotY;
@@ -16,8 +21,12 @@ public class FirstPersonMovement : MonoBehaviour
     private InputAction _lookAction;
     private InputAction _moveAction;
     private InputAction _runAction;
+    private InputAction _jumpAction;
 
     private float turnSmoothVelocity, turnSmoothTime = 0.1f;
+
+    private Vector3 _velocity;
+
     private void Start()
     {
         _mainCam = Camera.main;
@@ -30,6 +39,9 @@ public class FirstPersonMovement : MonoBehaviour
         _runAction = InputSystem.actions.FindAction("Sprint");
         _runAction.started += (_) => _running = true;
         _runAction.canceled += (_) => _running = false;
+
+        _jumpAction = InputSystem.actions.FindAction("Jump");
+        _jumpAction.started += (_) => Jump();
     }
 
     private void Update()
@@ -39,6 +51,8 @@ public class FirstPersonMovement : MonoBehaviour
 
         Vector2 move = _moveAction.ReadValue<Vector2>();
         Move(move);
+
+        ApplyGravity();
     }
 
     public void SetStartingValues(float x, float y)
@@ -47,10 +61,10 @@ public class FirstPersonMovement : MonoBehaviour
         _rotY = y;
     }
 
-    public void CameraRotation(Vector2 delta)
+    private void CameraRotation(Vector2 delta)
     {
-        _rotY += delta.x * inputSensitivity * Time.deltaTime;
-        _rotX -= delta.y * inputSensitivity * Time.deltaTime;
+        _rotY += delta.x * InputSensitivity * Time.deltaTime;
+        _rotX -= delta.y * InputSensitivity * Time.deltaTime;
 
         //Clamp rotation x between -clampAngle and clampAngle
         _rotX = Mathf.Clamp(_rotX, -ClampAngle, ClampAngle);
@@ -59,19 +73,35 @@ public class FirstPersonMovement : MonoBehaviour
         _mainCam.transform.localRotation = localRot;
     }
 
-    public void Move(Vector2 movement)
+    private void Move(Vector2 movement)
     {
         if (movement.sqrMagnitude == 0)
             return;
 
         float currentSpeed = _running ? RunSpeed : WalkSpeed;
-        Vector3 inputDirection = new Vector3(movement.x, 0, movement.y).normalized;
-        //apply camera rotation to player 
+        Vector3 inputDirection = new Vector3(movement.x, _jumpSpeed, movement.y).normalized;
+        // apply camera rotation to player 
         float targetAngle = _mainCam.transform.eulerAngles.y + Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
         Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward * currentSpeed;
 
         Controller.Move(Time.deltaTime * moveDirection);
+    }
+
+    private void ApplyGravity()
+    {
+        Controller.Move(_velocity * Time.deltaTime);
+
+        if (Controller.isGrounded && _velocity.y < 0)
+            _velocity.y = Gravity;
+        else if (!Controller.isGrounded)
+            _velocity.y += Gravity * Time.deltaTime;
+    }
+
+    private void Jump()
+    {
+        if (!Controller.isGrounded) return;
+
+        _velocity.y = Mathf.Sqrt(-2 * Gravity * JumpHeight);
     }
 }

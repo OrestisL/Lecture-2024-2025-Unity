@@ -1,3 +1,5 @@
+using System;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +8,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public CharacterController Controller;
     public float WalkSpeed;
     public float RunSpeed;
+    public float JumpHeight;
+    public float Gravity = 10;
     private bool _running;
 
     private InputAction _moveAction;
@@ -13,6 +17,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField]
     private Camera _mainCam;
 
+    private Vector3 _velocity;
     private float turnSmoothVelocity, turnSmoothTime = 0.1f;
     private void Start()
     {
@@ -25,12 +30,16 @@ public class ThirdPersonMovement : MonoBehaviour
         _runAction.canceled += (_) => _running = false;
 
         _mainCam = Camera.main;
+
+        InputSystem.actions.FindAction("Jump").started += (_) => Jump();
     }
 
     private void Update()
     {
         Vector2 move = _moveAction.ReadValue<Vector2>();
         Move(move);
+
+        ApplyGravity();
     }
 
     private void Move(Vector2 input)
@@ -51,5 +60,22 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward * currentSpeed;
 
         Controller.Move(Time.deltaTime * moveDirection);
+    }
+
+
+    private void Jump()
+    {
+        if (!Controller.isGrounded) return;
+
+        _velocity.y = Mathf.Sqrt(-2 * Gravity * JumpHeight);
+    }
+    private void ApplyGravity()
+    {
+        Controller.Move(_velocity * Time.deltaTime);
+
+        if (Controller.isGrounded && _velocity.y < 0)
+            _velocity.y = Gravity;
+        else if (!Controller.isGrounded)
+            _velocity.y += Gravity * Time.deltaTime;
     }
 }

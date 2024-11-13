@@ -24,9 +24,6 @@ public class CameraMovement : MonoBehaviour
     private float camDistanceXtoPlayer;
     private float camDistanceYtoPlayer;
     private float camDistanceZtoPLayer;
-    //Mouse inputs
-    //public float mouseX;
-    //public float mouseY;
 
     private float finalInputX;
     private float finalInputZ;
@@ -41,17 +38,7 @@ public class CameraMovement : MonoBehaviour
     public bool AltPressed = false;                               //Used to determine when alt's pressed, so the cursor can appear                   
     private Vector3 followPos;
 
-    public delegate void CameraDel();
-
-    public event CameraDel CameraChangeRotation;
-
     private InputAction _lookAction;
-
-    public void OnCameraChangedRotation()
-    {
-        CameraChangeRotation?.Invoke();
-    }
-
 
     void Start()
     {
@@ -63,15 +50,10 @@ public class CameraMovement : MonoBehaviour
         _lookAction = InputSystem.actions.FindAction("Look");
     }
 
-    public  void Update()
+    public void Update()
     {
         Vector2 look = _lookAction.ReadValue<Vector2>();
-
         HandleRotationMovement(look);
-    }
-
-    public void LateUpdate()
-    {
         CameraUpdater();
     }
 
@@ -108,11 +90,5 @@ public class CameraMovement : MonoBehaviour
             transform.position = Vector3.SmoothDamp(transform.position, target.position, ref vel, (smoothAmount / 20f));
         }
 
-    }
-
-    private void OnApplicationQuit()
-    {
-        //Unsubscrible all functions from the event.
-        CameraChangeRotation = null;
     }
 }
