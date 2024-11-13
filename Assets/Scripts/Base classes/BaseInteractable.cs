@@ -1,5 +1,6 @@
 using UnityEngine;
-using System;
+using UnityEngine.Events;
+
 public abstract class BaseInteractable : MonoBehaviour
 {
     public LayerMask PlayerLayer;
@@ -9,6 +10,8 @@ public abstract class BaseInteractable : MonoBehaviour
     private GameObject _prefabInstance;
     public abstract void Interact();
 
+    public UnityEvent<GameObject> OnPlayerDetected;
+
     private void FixedUpdate()
     {
         IsPlayerInProximity();
@@ -16,18 +19,26 @@ public abstract class BaseInteractable : MonoBehaviour
 
     private void IsPlayerInProximity()
     {
-        if (Physics.CheckSphere(transform.position, InteractRadius, PlayerLayer))
+        Collider[] colliders = Physics.OverlapSphere(transform.position, InteractRadius, PlayerLayer);
+        if (colliders.Length > 0)
         {
             if (_prefabInstance == null)
             {
                 _prefabInstance = Instantiate(CanvasPrefab);
-                _prefabInstance.transform.position = transform.position + 1.5f * Vector3.up ;
+                _prefabInstance.transform.position = transform.position + 1.5f * Vector3.up;
+
+                // ? checks for null
+                OnPlayerDetected?.Invoke(colliders[0].gameObject); // the passed gameObject will be the player
             }
         }
         else
         {
             if (_prefabInstance != null)
+            {
                 Destroy(_prefabInstance);
+                // ensure all listeners know that the player has left this interactable's proximity
+                OnPlayerDetected?.Invoke(null);
+            }
         }
     }
 }

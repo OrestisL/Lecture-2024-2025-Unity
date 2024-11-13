@@ -19,6 +19,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private Vector3 _velocity;
     private float turnSmoothVelocity, turnSmoothTime = 0.1f;
+    private AnimationsController _animController;
+
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
@@ -32,6 +34,7 @@ public class ThirdPersonMovement : MonoBehaviour
         _mainCam = Camera.main;
 
         InputSystem.actions.FindAction("Jump").started += (_) => Jump();
+        _animController = GetComponent<AnimationsController>();
     }
 
     private void Update()
@@ -45,7 +48,10 @@ public class ThirdPersonMovement : MonoBehaviour
     private void Move(Vector2 input)
     {
         if (input.sqrMagnitude == 0)
+        {
+            _animController.SetAnimatorFloatParameter("Speed", 0);
             return;
+        }
 
         Vector3 inputDirection = new Vector3(input.x, 0, input.y).normalized;
 
@@ -55,6 +61,7 @@ public class ThirdPersonMovement : MonoBehaviour
         transform.localRotation = Quaternion.Euler(0, angle, 0);
 
         float currentSpeed = _running ? RunSpeed : WalkSpeed; 
+        _animController.SetAnimatorFloatParameter("Speed", currentSpeed);
 
         //rotate forward to look direction
         Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward * currentSpeed;
