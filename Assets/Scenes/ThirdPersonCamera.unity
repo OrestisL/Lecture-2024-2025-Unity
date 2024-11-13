@@ -1722,7 +1722,7 @@ MonoBehaviour:
   camFollowObj: {fileID: 683860683}
   clampAngleMin: 30
   clampAngleMax: 60
-  inputSensitivity: 20
+  inputSensitivity: 10
   cam: {fileID: 573425543}
   smoothCam: 0
   smoothAmount: 2
@@ -1755,7 +1755,7 @@ GameObject:
   - component: {fileID: 2072963773}
   - component: {fileID: 2072963772}
   - component: {fileID: 2072963771}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,4 +13,9 @@ public class AnimationsController : MonoBehaviour
     {
         _animator.SetFloat(name, value);
     }
+
+    public void SetAnimatorBoolParameter(string name, bool value)
+    {
+        _animator.SetBool(name, value);
+    }
 }

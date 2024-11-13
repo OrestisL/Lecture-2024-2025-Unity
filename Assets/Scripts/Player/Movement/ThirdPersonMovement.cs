@@ -80,6 +80,8 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         Controller.Move(_velocity * Time.deltaTime);
 
+        _animController.SetAnimatorBoolParameter("IsGrounded", Controller.isGrounded);
+
         if (Controller.isGrounded && _velocity.y < 0)
             _velocity.y = Gravity;
         else if (!Controller.isGrounded)

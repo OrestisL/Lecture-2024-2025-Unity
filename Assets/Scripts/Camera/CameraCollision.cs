@@ -40,7 +40,7 @@ public class CameraCollision : MonoBehaviour
 
     private void HandleCollision()
     {
-        Vector3 desiredCamPos = transform.parent.TransformPoint(dollyDir * maxDistance);
+        Vector3 desiredCamPos = transform.parent.TransformPoint(dollyDir * maxDistance) + Vector3.down;
 
         RaycastHit hit;
 
