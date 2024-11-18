@@ -2,7 +2,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
 
-public static class Utilities
+public static partial class Utilities
 {
     private static string _saveDataPath;
     public static string SaveDataPath
@@ -11,7 +11,7 @@ public static class Utilities
         {
             if (string.IsNullOrWhiteSpace(_saveDataPath)) 
             {
-                _saveDataPath = Path.Combine(Application.persistentDataPath, "Save Data");
+                _saveDataPath = Path.Combine(Application.persistentDataPath, "Saved Data");
                 if (!Directory.Exists(_saveDataPath)) 
                 {
                     Directory.CreateDirectory(_saveDataPath);

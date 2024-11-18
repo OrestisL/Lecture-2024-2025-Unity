@@ -10,32 +10,32 @@ public class PlayerInteractions : MonoBehaviour
 
     private void Start()
     {
-        SetAction();
+        SetInteractAction();
     }
 
-    public void SetAction()
+    public void SetInteractAction()
     {
         interactAction = InputSystem.actions.FindAction("Interact");
 
-        interactAction.started += (context) => 
+        interactAction.started += (context) =>
         {
-            Collider[] interactables = Physics.OverlapSphere(transform.position, 
-                InteractRadius, InteractableLayer);
-
-            interactables = 
-                interactables.OrderByDescending(
-                    collider => Vector3.Distance(collider.gameObject.transform.position, transform.position)).ToArray();
-
-            if (interactables.Length > 0) 
-            {
-                if (interactables[0].gameObject.TryGetComponent(out BaseInteractable interactable)) 
-                {
-                    interactable.Interact();
-                }
-            }
+            Interact();
         };
     }
 
+    private void Interact()
+    {
+        Collider[] interactables = Physics.OverlapSphere(transform.position, InteractRadius, InteractableLayer);
 
+        if (interactables.Length == 0) return;
 
+        interactables =
+            interactables.OrderByDescending(
+                collider => Vector3.Distance(collider.gameObject.transform.position, transform.position)).ToArray();
+
+        if (interactables[0].gameObject.TryGetComponent(out BaseInteractable interactable))
+        {
+            interactable.Interact();
+        }
+    }
 }

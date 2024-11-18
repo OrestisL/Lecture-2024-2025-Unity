@@ -16,7 +16,6 @@ public class TeleporterInteractable : BaseInteractable
         controller.enabled = false;
 
         _player.transform.position = Target.position;
-        _player.transform.rotation *= Quaternion.Euler(90, 90, 90);
         controller.enabled = true;
     }
 }
