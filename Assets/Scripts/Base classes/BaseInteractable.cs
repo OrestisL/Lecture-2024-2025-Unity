@@ -6,11 +6,24 @@ public abstract class BaseInteractable : MonoBehaviour
     public LayerMask PlayerLayer;
     public float InteractRadius = 2.0f;
     public GameObject CanvasPrefab;
+    public AudioClip InteractClip;
+    public AudioSource AudioSource;
 
     private GameObject _prefabInstance;
     public abstract void Interact();
 
     public UnityEvent<GameObject> OnPlayerDetected;
+
+    public virtual void Start() 
+    {
+        AudioSource = gameObject.AddComponent<AudioSource>();
+        AudioSource.spatialBlend = 1.0f;
+        AudioSource.volume = 0.70f;
+
+        AudioSource.rolloffMode = AudioRolloffMode.Linear;
+        AudioSource.maxDistance = 500.0f;
+
+    }
 
     private void FixedUpdate()
     {

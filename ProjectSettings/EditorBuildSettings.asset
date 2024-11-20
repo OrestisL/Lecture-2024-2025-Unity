@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestNavigateBetweenScenes.unity
+    path: Assets/Scenes/Intro.unity
     guid: 8c7649cce5e874e4896577a7190034ce
   - enabled: 1
     path: Assets/Scenes/ThirdPersonCamera.unity
