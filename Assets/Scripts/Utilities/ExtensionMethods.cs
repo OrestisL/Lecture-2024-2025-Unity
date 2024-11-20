@@ -11,7 +11,7 @@ public static partial class ExtensionMethods
 
     public static bool ParameterExists(this Animator animator, string name)
     {
-        foreach (var parameter in animator.parameters)
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
         {
             if (parameter.name == name)
                 return true;

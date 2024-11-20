@@ -7,15 +7,14 @@ public static partial class Utilities
     private static string _saveDataPath;
     public static string SaveDataPath
     {
-        get 
+        get
         {
-            if (string.IsNullOrWhiteSpace(_saveDataPath)) 
+            if (string.IsNullOrWhiteSpace(_saveDataPath))
             {
                 _saveDataPath = Path.Combine(Application.persistentDataPath, "Saved Data");
-                if (!Directory.Exists(_saveDataPath)) 
-                {
+                if (!Directory.Exists(_saveDataPath))
                     Directory.CreateDirectory(_saveDataPath);
-                }
+
             }
 
             return _saveDataPath;
@@ -24,7 +23,7 @@ public static partial class Utilities
 
     public static void SaveData<T>(T data, string fileName)
     {
-        if (string.IsNullOrWhiteSpace(fileName)) 
+        if (string.IsNullOrWhiteSpace(fileName))
             throw new System.Exception(string.Format("Cannot save file without a name ({0})", fileName));
         if (data == null)
             throw new System.Exception(string.Format("Data was null when trying to save file ({0})", nameof(data)));
@@ -36,7 +35,7 @@ public static partial class Utilities
         sw.Write(json);
     }
 
-    public static T LoadData<T>(string fileName) 
+    public static T LoadData<T>(string fileName)
     {
         if (string.IsNullOrEmpty(fileName))
             throw new System.Exception(string.Format("Cannot load file without a name ({0})", fileName));

@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Time/Clock.unity
-    guid: 338d3daa1fcd02a4490bf441e2f16ea8
+    path: Assets/Scenes/TestNavigateBetweenScenes.unity
+    guid: 8c7649cce5e874e4896577a7190034ce
+  - enabled: 1
+    path: Assets/Scenes/ThirdPersonCamera.unity
+    guid: 4ae5fc62bb0804342a7cdd87a8c3e086
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -1,7 +1,6 @@
-using Unity.Android.Gradle.Manifest;
+using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
 
 public class FirstPersonMovement : MonoBehaviour
 {
