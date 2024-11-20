@@ -1,4 +1,3 @@
-using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +24,8 @@ public class FirstPersonMovement : MonoBehaviour
     private float turnSmoothVelocity, turnSmoothTime = 0.1f;
 
     private Vector3 _velocity;
+    private Transform _model;
+    private AnimationsController _animController;
 
     private void Start()
     {
@@ -41,6 +42,9 @@ public class FirstPersonMovement : MonoBehaviour
 
         _jumpAction = InputSystem.actions.FindAction("Jump");
         _jumpAction.started += (_) => Jump();
+
+        _model = transform.GetChild(0);
+        _animController = GetComponent<AnimationsController>();
     }
 
     private void Update()
@@ -70,14 +74,19 @@ public class FirstPersonMovement : MonoBehaviour
 
         Quaternion localRot = Quaternion.Euler(_rotX, _rotY, 0.0f);
         _mainCam.transform.localRotation = localRot;
+        _model.transform.localRotation = Quaternion.AngleAxis(_rotY, Vector3.up);
     }
 
     private void Move(Vector2 movement)
     {
         if (movement.sqrMagnitude == 0)
+        {
+            _animController.SetAnimatorFloatParameter("Speed", 0);
             return;
+        }
 
         float currentSpeed = _running ? RunSpeed : WalkSpeed;
+        _animController.SetAnimatorFloatParameter("Speed", currentSpeed);
         Vector3 inputDirection = new Vector3(movement.x, _jumpSpeed, movement.y).normalized;
         // apply camera rotation to player 
         float targetAngle = _mainCam.transform.eulerAngles.y + Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
@@ -90,7 +99,7 @@ public class FirstPersonMovement : MonoBehaviour
     private void ApplyGravity()
     {
         Controller.Move(_velocity * Time.deltaTime);
-
+        _animController.SetAnimatorBoolParameter("IsGrounded", Controller.isGrounded);
         if (Controller.isGrounded && _velocity.y < 0)
             _velocity.y = Gravity;
         else if (!Controller.isGrounded)
