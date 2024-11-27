@@ -21,7 +21,7 @@ public class FirstPersonMovement : MonoBehaviour
     private InputAction _runAction;
     private InputAction _jumpAction;
 
-    private float turnSmoothVelocity, turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity, turnSmoothTime;
 
     private Vector3 _velocity;
     private Transform _model;

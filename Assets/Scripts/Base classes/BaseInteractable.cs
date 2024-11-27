@@ -22,7 +22,6 @@ public abstract class BaseInteractable : MonoBehaviour
 
         AudioSource.rolloffMode = AudioRolloffMode.Linear;
         AudioSource.maxDistance = 500.0f;
-
     }
 
     private void FixedUpdate()

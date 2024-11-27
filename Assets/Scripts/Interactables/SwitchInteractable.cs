@@ -5,8 +5,9 @@ public class SwitchInteractable : BaseInteractable
     public Light Light;
     public AnimationsController AnimationsController;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         //Light = transform.parent.GetComponentInChildren<Light>(true);
         AnimationsController = GetComponent<AnimationsController>();
         //AnimationsController.Init();
