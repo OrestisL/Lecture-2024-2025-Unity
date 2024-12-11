@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 9ccaaa7728d800946bf8d084ae03e400
+timeCreated: 1498765306
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57772
+  packageName: Epic Toon FX
+  packageVersion: 1.82
+  assetPath: Assets/Epic Toon FX/Demo/Scripts/ETFXFireProjectile.cs
+  uploadId: 679579

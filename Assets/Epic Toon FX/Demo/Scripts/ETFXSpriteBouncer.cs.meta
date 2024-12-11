@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 49380fb1a91486544b2b083198efb6c0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57772
+  packageName: Epic Toon FX
+  packageVersion: 1.82
+  assetPath: Assets/Epic Toon FX/Demo/Scripts/ETFXSpriteBouncer.cs
+  uploadId: 679579

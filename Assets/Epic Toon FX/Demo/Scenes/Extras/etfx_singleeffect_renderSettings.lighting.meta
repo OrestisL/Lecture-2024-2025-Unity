@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 001e8b8e397b5774fba22725b1a87c33
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57772
+  packageName: Epic Toon FX
+  packageVersion: 1.82
+  assetPath: Assets/Epic Toon FX/Demo/Scenes/Extras/etfx_singleeffect_renderSettings.lighting
+  uploadId: 679579

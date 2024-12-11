@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 595f78f93d857994bbbb4595e23b9000
+timeCreated: 1531237310
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57772
+  packageName: Epic Toon FX
+  packageVersion: 1.82
+  assetPath: Assets/Epic Toon FX/Demo/Demo Prefabs/VFX Library/ParticleEffectsLibraryETFX.prefab
+  uploadId: 679579
