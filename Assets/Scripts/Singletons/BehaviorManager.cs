@@ -8,6 +8,7 @@ public class BehaviorManager : GenericSingleton<BehaviorManager>
 {
     private List<ManagedBehavior> _behaviors = new();
     private bool _isPlaying = true;
+
     public UnityEvent<bool> OnGameStateChanged = new();
 
     public int SplitThershold = 10;
@@ -16,12 +17,17 @@ public class BehaviorManager : GenericSingleton<BehaviorManager>
     {
         base.Awake();
         StartCoroutine(Updater());
-        //SceneManager.sceneLoaded += RestOnSceneLoad;
+        SceneManager.sceneLoaded += RestOnSceneLoad;
     }
 
     private void RestOnSceneLoad(Scene arg0, LoadSceneMode arg1)
     {
+        // clear to avoid null refs
         _behaviors = new();
+        OnGameStateChanged.RemoveAllListeners();
+
+        // should be playing when changing scene
+        _isPlaying = true;
     }
 
     public void Add(ManagedBehavior behavior)

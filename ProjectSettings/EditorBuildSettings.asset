@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro.unity
     guid: 8c7649cce5e874e4896577a7190034ce
   - enabled: 1
-    path: Assets/Scenes/ThirdPersonCamera.unity
+    path: Assets/Scenes/ThirdPersonCamera/ThirdPersonCamera.unity
     guid: 4ae5fc62bb0804342a7cdd87a8c3e086
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

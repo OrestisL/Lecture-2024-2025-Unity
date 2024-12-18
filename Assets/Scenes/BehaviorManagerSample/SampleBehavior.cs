@@ -15,12 +15,12 @@ public class SampleBehavior : ManagedBehavior
 
     public override void OnFixedUpdate()
     {
-        Debug.Log($"{name}: FixedUpdate!");
+        //Debug.Log($"{name}: FixedUpdate!");
     }
 
     public override void OnLateUpdate()
     {
-        Debug.Log($"{name}: LateUpdate!");
+        //Debug.Log($"{name}: LateUpdate!");
     }
 
     public override void OnUpdate()
