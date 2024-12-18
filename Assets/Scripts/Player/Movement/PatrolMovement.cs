@@ -30,7 +30,7 @@ public class PatrolPosition : Command
 
     }
 }
-public class PatrolMovement : PlayPauseBehaviour
+public class PatrolMovement : ManagedBehavior
 {
     public List<PatrolPosition> positions;
     private PatrolPosition _currentPosition;
@@ -38,15 +38,15 @@ public class PatrolMovement : PlayPauseBehaviour
     [SerializeField] private int _currentPositionIndex = 0;
     private float _minDistanceBetweenPositions = 2.0f;
 
-    public override void Start()
+    public override void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
         if (!agent)
         {
             agent = GetComponent<NavMeshAgent>();
         }
 
-        PausePlayManager.Instance.OnGameStateChanged.AddListener(x => agent.speed = x ? 3.5f : 0f);
+        BehaviorManager.Instance.OnGameStateChanged.AddListener(x => agent.speed = x ? 3.5f : 0f);
     }
 
     public void AddPosition(Vector3 position)
@@ -97,9 +97,18 @@ public class PatrolMovement : PlayPauseBehaviour
         agent.SetDestination(_currentPosition.targetPosition);
     }
 
-    public override void Update()
+    public override void OnUpdate()
     {
-        base.Update();
         Move();
+    }
+
+    public override void OnFixedUpdate()
+    {
+       
+    }
+
+    public override void OnLateUpdate()
+    {
+       
     }
 }
