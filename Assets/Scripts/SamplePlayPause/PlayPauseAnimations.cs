@@ -1,14 +1,29 @@
 using UnityEngine;
 
-public class PlayPauseAnimations : PlayPauseBehaviour
+public class PlayPauseAnimations : ManagedBehavior
 {
     Animator _animator;
-    public override void Start()
+    public override void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
         _animator = GetComponent<Animator>();
 
-        PausePlayManager.Instance.OnGameStateChanged.
+        BehaviorManager.Instance.OnGameStateChanged.
             AddListener(isPlaying => _animator.speed = isPlaying ? 1 : 0);
+    }
+
+    public override void OnFixedUpdate()
+    {
+       
+    }
+
+    public override void OnLateUpdate()
+    {
+        
+    }
+
+    public override void OnUpdate()
+    {
+        
     }
 }

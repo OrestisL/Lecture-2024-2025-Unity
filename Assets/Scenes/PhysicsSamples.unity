@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 0}
-  Force: 10
+  Force: 20
   Angle: -20
 --- !u!1001 &1203942819
 PrefabInstance:
