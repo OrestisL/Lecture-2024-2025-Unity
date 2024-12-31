@@ -16,11 +16,15 @@ public class BehaviorManager : GenericSingleton<BehaviorManager>
     public override void Awake()
     {
         base.Awake();
-        StartCoroutine(Updater());
-        SceneManager.sceneLoaded += RestOnSceneLoad;
+        //StartCoroutine(Updater());
+        SceneManager.sceneLoaded += ResetOnSceneLoad;
+
+        GameObject.Find("Button").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(ToggleStatus);
+
+       // _behaviors = new();
     }
 
-    private void RestOnSceneLoad(Scene arg0, LoadSceneMode arg1)
+    private void ResetOnSceneLoad(Scene arg0, LoadSceneMode arg1)
     {
         // clear to avoid null refs
         _behaviors = new();
@@ -44,15 +48,15 @@ public class BehaviorManager : GenericSingleton<BehaviorManager>
     }
 
     // Update every behacior all at once
-    //public void Update()
-    //{
-    //    if (!_isPlaying) return;
-    //
-    //    foreach (var behavior in _behaviors) 
-    //    {
-    //        behavior.OnUpdate();
-    //    }
-    //}
+    public void Update()
+    {
+        if (!_isPlaying) return;
+    
+        foreach (var behavior in _behaviors) 
+        {
+            behavior.OnUpdate();
+        }
+    }
 
     public void FixedUpdate()
     {
@@ -78,6 +82,7 @@ public class BehaviorManager : GenericSingleton<BehaviorManager>
     {
         _isPlaying = !_isPlaying;
         OnGameStateChanged?.Invoke(_isPlaying);
+        Debug.Log(_behaviors.Count);
     }
 
     // Split updates in 2 frames

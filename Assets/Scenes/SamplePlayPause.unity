@@ -449,7 +449,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 12d009ad09fdc6c4daa1bfa1ed4bd16b, type: 3}
   m_PrefabInstance: {fileID: 1908036331}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &781591983
+--- !u!114 &781591986
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -461,7 +461,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb30be2320663304a87312cee1decb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsPlaying: 1
+--- !u!1 &822925970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 822925972}
+  - component: {fileID: 822925971}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &822925971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822925970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0b98a328b299b4b87fe7a1fc4072fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnGameStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  SplitThershold: 10
+--- !u!4 &822925972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822925970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6764581, y: -1.9718714, z: 9.259121}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &870999709
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,53 +868,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &1327626296
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1327626298}
-  - component: {fileID: 1327626297}
-  m_Layer: 0
-  m_Name: PlayPauseManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1327626297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1327626296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98ffd5c73403ac841a06863422f23ecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnGameStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &1327626298
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1327626296}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 559.38464, y: 282.9863, z: 601.8118}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1882614069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -929,7 +929,7 @@ PrefabInstance:
       addedObject: {fileID: 1882614071}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e07cf509050f3fe40b594dd20e34050e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1882614073}
+      addedObject: {fileID: 1882614075}
   m_SourcePrefab: {fileID: 100100000, guid: e07cf509050f3fe40b594dd20e34050e, type: 3}
 --- !u!1 &1882614070 stripped
 GameObject:
@@ -958,7 +958,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1882614073
+--- !u!114 &1882614075
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -970,7 +970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb30be2320663304a87312cee1decb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsPlaying: 1
 --- !u!1001 &1908036331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1033,7 +1032,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 12d009ad09fdc6c4daa1bfa1ed4bd16b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 781591983}
+      addedObject: {fileID: 781591986}
   m_SourcePrefab: {fileID: 100100000, guid: 12d009ad09fdc6c4daa1bfa1ed4bd16b, type: 3}
 --- !u!1 &1934272736
 GameObject:
@@ -1117,19 +1116,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1934272739}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1327626297}
-        m_TargetAssemblyTypeName: PausePlayManager, Assembly-CSharp
-        m_MethodName: PlayPause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1934272739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1179,4 +1166,4 @@ SceneRoots:
   - {fileID: 1908036331}
   - {fileID: 1105789574}
   - {fileID: 275884046}
-  - {fileID: 1327626298}
+  - {fileID: 822925972}
