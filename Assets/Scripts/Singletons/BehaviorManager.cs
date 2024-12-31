@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BehaviorManager : GenericSingleton<BehaviorManager>
 {
@@ -18,10 +19,11 @@ public class BehaviorManager : GenericSingleton<BehaviorManager>
         base.Awake();
         //StartCoroutine(Updater());
         SceneManager.sceneLoaded += ResetOnSceneLoad;
+   
+        _behaviors = new();
 
-        GameObject.Find("Button").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(ToggleStatus);
-
-       // _behaviors = new();
+        var pause = InputSystem.actions.FindAction("Pause");
+        pause.started += ctx => ToggleStatus();
     }
 
     private void ResetOnSceneLoad(Scene arg0, LoadSceneMode arg1)
